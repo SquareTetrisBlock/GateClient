@@ -8,7 +8,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class NoSlow extends Module {
-    public static final NoSlow INSTANCE = new NoSlow();
 
     public final BooleanSetting sneak = new BooleanSetting("Sneaking", "sneak", true);
     public final BooleanSetting item = new BooleanSetting("Item", "item", true);

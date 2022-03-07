@@ -4,7 +4,6 @@ import me.thef1xer.gateclient.modules.Module;
 import net.minecraftforge.client.GuiIngameForge;
 
 public class NoOverlay extends Module {
-    public static final NoOverlay INSTANCE = new NoOverlay();
 
     public NoOverlay() {
         super("No Overlay", "nooverlay", Module.ModuleCategory.RENDER);

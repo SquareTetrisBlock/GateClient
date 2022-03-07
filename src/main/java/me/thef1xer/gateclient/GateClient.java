@@ -8,6 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import org.lwjgl.opengl.Display;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class GateClient {
@@ -29,6 +30,7 @@ public class GateClient {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        Display.setTitle(Reference.NAME);
         moduleManager = new ModuleManager();
         commandManager = new CommandManager();
         configManager = new ConfigManager();

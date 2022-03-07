@@ -14,7 +14,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ModuleList extends Module {
-    public static final ModuleList INSTANCE = new ModuleList();
 
     private List<Module> modulesSorted;
     private final FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
@@ -30,38 +29,44 @@ public class ModuleList extends Module {
     public void drawList(ScaledResolution sr) {
         int i = 0;
         for (Module module : this.modulesSorted) {
-            if (module.isEnabled() && module.drawOnHud.getValue()) {
-                int hexColor;
-                if (color.getCurrentValue() == Color.RAINBOW) {
-                    int[] rainbow = ColorUtil.getRainbow(5, 0.1F * i);
-                    hexColor = ColorUtil.RGBtoHex(rainbow[0], rainbow[1], rainbow[2]);
-                } else if (color.getCurrentValue() == Color.CATEGORY) {
-                    hexColor = module.getModuleCategory().getColor();
-                } else {
-                    hexColor = ColorUtil.RGBtoHex(staticColor.getRed(), staticColor.getGreen(), staticColor.getBlue());
+            if (module.drawOnHud.getValue()) {
+                int hexColor = -1;
+                switch (color.getCurrentValue().ordinal()) {
+                    case 0:
+                        hexColor = ColorUtil.RGBtoHex(staticColor.getRed(), staticColor.getGreen(), staticColor.getBlue());
+                        break;
+                    case 1:
+                        hexColor = module.getModuleCategory().getColor();
+                        break;
+                    case 2:
+                        int[] rainbow = ColorUtil.getRainbow(5, 0.1F * i);
+                        hexColor = ColorUtil.RGBtoHex(rainbow[0], rainbow[1], rainbow[2]);
+                        break;
+                    case 3:
+                        hexColor = module.getColour();
+                        break;
                 }
-                fr.drawStringWithShadow(module.getName(), sr.getScaledWidth() - fr.getStringWidth(module.getName()) - 4, 4 + i * fr.FONT_HEIGHT, hexColor);
-                i++;
+                fr.drawStringWithShadow(module.getName(), (float) (sr.getScaledWidth() - module.position.getX()), (float) module.position.getY(), hexColor);
+                if(module.isEnabled()) {
+                    module.position.interpolate(fr.getStringWidth(module.getName()) + 4, 4 + i * fr.FONT_HEIGHT);
+                    i++;
+                } else {
+                    module.position.interpolate(-fr.getStringWidth(module.getName()), 4 + i * fr.FONT_HEIGHT);
+                }
             }
         }
     }
 
     public void sortList() {
         modulesSorted = new ArrayList<>(GateClient.getGate().moduleManager.MODULE_LIST);
-        modulesSorted.sort((module1, module2) -> {
-            if (fr.getStringWidth(module1.getName()) < fr.getStringWidth(module2.getName())) {
-                return 1;
-            } else if (fr.getStringWidth(module1.getName()) > fr.getStringWidth(module2.getName())) {
-                return -1;
-            }
-            return 0;
-        });
+        modulesSorted.sort(Comparator.comparingInt(module -> fr.getStringWidth(((Module)module).getName())).reversed());
     }
 
     public enum Color {
         STATIC("Static"),
         CATEGORY("Category"),
-        RAINBOW("Rainbow");
+        RAINBOW("Rainbow"),
+        RANDOM("Random");
 
         private final String name;
         Color(String name) {

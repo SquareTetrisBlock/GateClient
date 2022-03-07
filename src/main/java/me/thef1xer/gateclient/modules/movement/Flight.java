@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class Flight extends Module {
-    public static final Flight INSTANCE = new Flight();
 
     public final EnumSetting mode = new EnumSetting("Mode", "mode", Mode.values(), Mode.VANILLA);
 

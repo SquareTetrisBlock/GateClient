@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
 public class GuiMove extends Module {
-    public static final GuiMove INSTANCE = new GuiMove();
 
     public BooleanSetting sneak = new BooleanSetting("Sneak", "sneak", false);
 

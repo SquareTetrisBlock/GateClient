@@ -16,7 +16,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ShulkerViewer extends Module {
-    public static final ShulkerViewer INSTANCE = new ShulkerViewer();
 
     public ShulkerViewer() {
         super("ShulkerViewer", "shulkerviewer", ModuleCategory.RENDER);

@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class FullBright extends Module {
-    public static final FullBright INSTANCE = new FullBright();
 
     private float lastGamma;
 

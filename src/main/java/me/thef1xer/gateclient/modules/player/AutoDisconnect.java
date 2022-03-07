@@ -1,5 +1,6 @@
 package me.thef1xer.gateclient.modules.player;
 
+import me.thef1xer.gateclient.GateClient;
 import me.thef1xer.gateclient.modules.Module;
 import me.thef1xer.gateclient.settings.impl.BooleanSetting;
 import me.thef1xer.gateclient.settings.impl.FloatSetting;
@@ -14,7 +15,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class AutoDisconnect extends Module {
-    public static final AutoDisconnect INSTANCE = new AutoDisconnect();
 
     public final BooleanSetting players = new BooleanSetting("Players", "players", false);
     public final FloatSetting health = new FloatSetting("Health", "health", 10, 0, 20, 1);
@@ -47,7 +47,8 @@ public class AutoDisconnect extends Module {
         // Players
         if (players.getValue()) {
             for (Entity entity : Minecraft.getMinecraft().world.loadedEntityList) {
-                if (entity instanceof EntityPlayer && entity != Minecraft.getMinecraft().player && entity != Freecam.INSTANCE.camera) {
+                if (entity instanceof EntityPlayer && entity != Minecraft.getMinecraft().player && entity !=
+                        ((Freecam)GateClient.getGate().moduleManager.getModule(Freecam.class)).camera) {
                     Minecraft.getMinecraft().player.connection.onDisconnect(new TextComponentString("A Player was found"));
                     if (disable.getValue()) {
                         this.setEnabled(false);

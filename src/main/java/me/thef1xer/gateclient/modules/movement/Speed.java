@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Speed extends Module {
-    public static final Speed INSTANCE = new Speed();
 
     private final Minecraft mc = Minecraft.getMinecraft();
 

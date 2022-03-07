@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
 public class Nametags extends Module {
-    public static final Nametags INSTANCE = new Nametags();
 
     private static final Minecraft mc = Minecraft.getMinecraft();
 

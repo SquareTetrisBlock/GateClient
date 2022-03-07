@@ -18,8 +18,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Jesus extends Module {
 
-    public static final Jesus INSTANCE = new Jesus();
-
     public final FloatSetting offset = new FloatSetting("Offset", "offset", 0.2F, 0F, 1F);
 
     private final Minecraft mc = Minecraft.getMinecraft();
@@ -55,7 +53,7 @@ public class Jesus extends Module {
     }
 
     @SubscribeEvent
-    public void onUndateWalking(UpdateWalkingPlayerEvent event) {
+    public void onUpdateWalking(UpdateWalkingPlayerEvent event) {
         if (isWaterWalking() && !mc.player.isSneaking()) {
 
             //This keeps the player constantly moving up and down to bypass some anticheats

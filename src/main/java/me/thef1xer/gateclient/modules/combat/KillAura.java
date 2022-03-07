@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class KillAura extends Module {
-    public static final KillAura INSTANCE = new KillAura();
 
     public final EnumSetting priority = new EnumSetting("Priority", "priority", Priority.values(), Priority.CLOSEST);
     public final FloatSetting reach = new FloatSetting("Reach", "reach", 3F, 0F, 6F);

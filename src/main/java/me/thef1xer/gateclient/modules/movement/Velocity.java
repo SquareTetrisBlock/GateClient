@@ -11,13 +11,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Velocity extends Module {
-    public static final Velocity INSTANCE = new Velocity();
 
     public final FloatSetting horizontal = new FloatSetting("Horizontal", "horizontal", 0, 0, 1);
     public final FloatSetting vertical = new FloatSetting("Vertical", "vertical", 0, 0, 1);
 
     public Velocity() {
-        super("Velocity", "velocity", Module.ModuleCategory.MOVEMENT);
+        super("Velocity", "velocity", Module.ModuleCategory.COMBAT);
         this.addSettings(horizontal, vertical);
     }
 
@@ -49,6 +48,7 @@ public class Velocity extends Module {
             if (velPacket.getEntityID() == Minecraft.getMinecraft().player.getEntityId()) {
 
                 // We don't want to calculate this if the settings's value is 0
+
                 if (horizontal.getValue() != 0) {
                     Minecraft.getMinecraft().player.motionX = (double)velPacket.getMotionX() * horizontal.getValue() / 8000.0D;
                     Minecraft.getMinecraft().player.motionZ = (double)velPacket.getMotionZ() * horizontal.getValue() / 8000.0D;

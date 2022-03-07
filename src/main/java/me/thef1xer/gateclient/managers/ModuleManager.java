@@ -10,46 +10,53 @@ import me.thef1xer.gateclient.modules.player.AutoDisconnect;
 import me.thef1xer.gateclient.modules.player.Freecam;
 import me.thef1xer.gateclient.modules.movement.*;
 import me.thef1xer.gateclient.modules.render.*;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ModuleManager {
     public final List<Module> MODULE_LIST = new ArrayList<>();
 
     public void init() {
         // Combat
-        MODULE_LIST.add(AutoTotem.INSTANCE);
-        MODULE_LIST.add(Criticals.INSTANCE);
-        MODULE_LIST.add(KillAura.INSTANCE);
+        MODULE_LIST.add(new AutoTotem());
+        MODULE_LIST.add(new Criticals());
+        MODULE_LIST.add(new KillAura());
         // HUD
-        MODULE_LIST.add(ArmorHUD.INSTANCE);
-        MODULE_LIST.add(ClickGuiModule.INSTANCE);
-        MODULE_LIST.add(Coords.INSTANCE);
-        MODULE_LIST.add(ModuleList.INSTANCE);
-        MODULE_LIST.add(Watermark.INSTANCE);
+        MODULE_LIST.add(new ArmorHUD());
+        MODULE_LIST.add(new ClickGuiModule());
+        MODULE_LIST.add(new Coords());
+        MODULE_LIST.add(new ModuleList());
+        MODULE_LIST.add(new Watermark());
         // Movement
-        MODULE_LIST.add(Flight.INSTANCE);
-        MODULE_LIST.add(GuiMove.INSTANCE);
-        MODULE_LIST.add(Jesus.INSTANCE);
-        MODULE_LIST.add(NoFall.INSTANCE);
-        MODULE_LIST.add(NoSlow.INSTANCE);
-        MODULE_LIST.add(SafeWalk.INSTANCE);
-        MODULE_LIST.add(Speed.INSTANCE);
-        MODULE_LIST.add(Sprint.INSTANCE);
-        MODULE_LIST.add(Velocity.INSTANCE);
+        MODULE_LIST.add(new Flight());
+        MODULE_LIST.add(new GuiMove());
+        MODULE_LIST.add(new Jesus());
+        MODULE_LIST.add(new NoFall());
+        MODULE_LIST.add(new NoSlow());
+        MODULE_LIST.add(new SafeWalk());
+        MODULE_LIST.add(new Speed());
+        MODULE_LIST.add(new Sprint());
+        MODULE_LIST.add(new Velocity());
         // Player
-        MODULE_LIST.add(AutoArmor.INSTANCE);
-        MODULE_LIST.add(AutoDisconnect.INSTANCE);
-        MODULE_LIST.add(Freecam.INSTANCE);
+        MODULE_LIST.add(new AutoArmor());
+        MODULE_LIST.add(new AutoDisconnect());
+        MODULE_LIST.add(new Freecam());
         // Render
-        MODULE_LIST.add(EntityESP.INSTANCE);
-        MODULE_LIST.add(StorageESP.INSTANCE);
-        MODULE_LIST.add(FullBright.INSTANCE);
-        MODULE_LIST.add(Nametags.INSTANCE);
-        MODULE_LIST.add(NoOverlay.INSTANCE);
-        MODULE_LIST.add(ShulkerViewer.INSTANCE);
-        MODULE_LIST.add(Tracers.INSTANCE);
-        MODULE_LIST.add(XRay.INSTANCE);
+        MODULE_LIST.add(new EntityESP());
+        MODULE_LIST.add(new StorageESP());
+        MODULE_LIST.add(new FullBright());
+        MODULE_LIST.add(new Nametags());
+        MODULE_LIST.add(new NoOverlay());
+        MODULE_LIST.add(new ShulkerViewer());
+        MODULE_LIST.add(new Tracers());
+        MODULE_LIST.add(new XRay());
     }
+
+    public Module getModule(Class<? extends Module> clazz) {
+        return MODULE_LIST.stream().filter(module -> module.getClass().equals(clazz)).collect(Collectors.toList()).get(0);
+    }
+
 }

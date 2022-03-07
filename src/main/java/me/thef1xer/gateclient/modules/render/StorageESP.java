@@ -17,7 +17,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class StorageESP extends Module {
-    public static final StorageESP INSTANCE = new StorageESP();
 
     public final RGBSetting chestColor = new RGBSetting("Chest Color", "chestcolor", 50, 50, 190);
     public final RGBSetting shulkerColor = new RGBSetting("Shulker Color", "shulkercolor", 255, 80, 240);

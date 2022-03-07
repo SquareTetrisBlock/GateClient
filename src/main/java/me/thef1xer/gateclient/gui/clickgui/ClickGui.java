@@ -48,7 +48,7 @@ public class ClickGui extends GuiScreen {
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
-        if (keyCode == ClickGuiModule.INSTANCE.getKeyBind()) {
+        if (keyCode == GateClient.getGate().moduleManager.getModule(ClickGuiModule.class).getKeyBind()) {
             mc.displayGuiScreen(null);
             if (this.mc.currentScreen == null) {
                 this.mc.setIngameFocus();
@@ -80,7 +80,7 @@ public class ClickGui extends GuiScreen {
 
     @Override
     public void onGuiClosed() {
-        ClickGuiModule.INSTANCE.setEnabled(false);
+        GateClient.getGate().moduleManager.getModule(ClickGuiModule.class).setEnabled(false);
         if (GateClient.getGate().presetManager.isAutoSave()) {
             GateClient.getGate().presetManager.saveActivePreset();
         }

@@ -8,7 +8,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 
 public class Watermark extends Module {
-    public static final Watermark INSTANCE = new Watermark();
 
     private final FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
 

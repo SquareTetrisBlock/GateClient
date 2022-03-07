@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class SafeWalk extends Module {
-    public static final SafeWalk INSTANCE = new SafeWalk();
 
     public final EnumSetting mode = new EnumSetting("Mode", "mode", Mode.values(), Mode.STOP);
 

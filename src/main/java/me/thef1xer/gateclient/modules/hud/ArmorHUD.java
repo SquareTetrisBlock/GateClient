@@ -10,7 +10,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ArmorHUD extends Module {
-    public static final ArmorHUD INSTANCE = new ArmorHUD();
 
     private final Minecraft mc = Minecraft.getMinecraft();
 

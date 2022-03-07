@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 
 public class ClickGuiModule extends Module {
-    public static final ClickGuiModule INSTANCE = new ClickGuiModule();
 
     public ClickGuiModule() {
         super("Click GUI", "clickgui", Keyboard.KEY_RSHIFT, ModuleCategory.HUD);

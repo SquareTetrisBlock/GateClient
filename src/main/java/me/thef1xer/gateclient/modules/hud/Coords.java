@@ -8,7 +8,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 
 public class Coords extends Module {
-    public static final Coords INSTANCE = new Coords();
 
     private final Minecraft mc = Minecraft.getMinecraft();
     private final FontRenderer fr = mc.fontRenderer;

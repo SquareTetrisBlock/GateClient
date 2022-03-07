@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
 public class Tracers extends Module {
-    public static final Tracers INSTANCE = new Tracers();
 
     public final BooleanSetting targetPlayer = new BooleanSetting("Players", "players", true);
     public final BooleanSetting targetHostile = new BooleanSetting("Monsters", "monsters", false);

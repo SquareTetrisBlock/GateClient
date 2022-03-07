@@ -10,7 +10,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Criticals extends Module {
-    public static final Criticals INSTANCE = new Criticals();
 
     public Criticals() {
         super("Criticals", "criticals", Module.ModuleCategory.COMBAT);
