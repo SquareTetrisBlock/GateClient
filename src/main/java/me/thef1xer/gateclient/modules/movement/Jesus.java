@@ -47,9 +47,10 @@ public class Jesus extends Module {
             return;
         }
 
-        // TODO: Fix bug that causes water to become solid when walking from the side
-        // Make the liquid act as a solid block (might need testing in some edge cases)
-        event.setCollisionBoundingBox(new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D - offset.getValue(), 1.0D));
+        // Make the liquid act as a solid block if the block is bellow the player
+        if (event.getBlockPos().getY() < mc.player.posY + offset.getValue()) {
+            event.setCollisionBoundingBox(new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D - offset.getValue(), 1.0D));
+        }
     }
 
     @SubscribeEvent
@@ -93,11 +94,6 @@ public class Jesus extends Module {
         return false;
     }
 
-    private boolean isWaterWalking() {
-        return !isInLiquid()
-                && isOverLiquid();
-    }
-
     private boolean isInLiquid() {
         AxisAlignedBB bb = mc.player.getEntityBoundingBox().offset(0, offset.getValue(), 0);
         for (int x = MathHelper.floor(bb.minX); x < MathHelper.ceil(bb.maxX); x++) {
@@ -110,5 +106,10 @@ public class Jesus extends Module {
             }
         }
         return false;
+    }
+
+    private boolean isWaterWalking() {
+        return !isInLiquid()
+                && isOverLiquid();
     }
 }

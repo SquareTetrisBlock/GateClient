@@ -28,8 +28,6 @@ public class Freecam extends Module {
 
     public Freecam() {
         super("Freecam", "freecam", Module.ModuleCategory.PLAYER);
-        verticalSpeed.setParent("Speed");
-        horizontalSpeed.setParent("Speed");
         this.addSettings(verticalSpeed, horizontalSpeed);
     }
 

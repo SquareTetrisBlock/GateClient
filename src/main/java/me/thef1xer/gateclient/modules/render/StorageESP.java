@@ -25,9 +25,6 @@ public class StorageESP extends Module {
 
     public StorageESP() {
         super("Storage ESP", "storageesp", Module.ModuleCategory.RENDER);
-        chestColor.setParent("Color");
-        shulkerColor.setParent("Color");
-        enderChestColor.setParent("Color");
         this.addSettings(chestColor, shulkerColor, enderChestColor, colorAlpha);
     }
 
